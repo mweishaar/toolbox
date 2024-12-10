@@ -1,0 +1,17 @@
+%YAML 1.1
+---
+# This ser2net config file is used to control a Monoprice 6-zone Home Audio System
+# with serial commands. Using it to allow Home Assistant to control the audio system.
+
+#define: &banner \r\nser2net port \p device \d [\B] (Debian GNU/Linux)\r\n\r\n
+#max-connections: 8
+
+connection: &mp_amp
+    #accepter: tcp,4999
+    accepter: telnet,4999
+    enable: on
+    options:
+      max-connections: 32
+    connector: serialdev,
+              /dev/ttyUSB0,
+              9600n81,local
